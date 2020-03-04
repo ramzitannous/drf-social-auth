@@ -1,0 +1,4 @@
+site_name: drf_social
+site_description: Social Authentication For Django Rest Framework
+repo_url: https://github.com/ramzitannous/drf_social
+site_dir: html
