@@ -1,7 +1,4 @@
 <div class="badges">
-    <a href="http://travis-ci.org/ramzitannous/drf-social-auth">
-        <img src="https://travis-ci.org/ramzitannous/drf-social-auth.svg?branch=master">
-    </a>
     <a href="https://pypi.python.org/pypi/drf-social-auth">
         <img src="https://img.shields.io/pypi/v/drf-social-auth.svg">
     </a>
@@ -29,32 +26,24 @@ Social Authentication For Django Rest Framework
 Install using `pip`...
 
 ```bash
-$ pip install drf-social-auth
+$ pip install drf_social
 ```
+## Usage  
+-------  
+  
+1. Add to Installed Apps
+`INSTALLED_APPS = [  
+  'social_django',  
+  'drf_social'  
+] `  
+2. Configure provider at django admin
 
-## Example
+## Customization
+-------------
 
-TODO: Write example.
+Custom JWT Token Response
+1. Inherit from SocialLoginView with custom serializer
 
-## Testing
-
-Install testing requirements.
-
-```bash
-$ pip install -r requirements.txt
-```
-
-Run with runtests.
-
-```bash
-$ ./runtests.py
-```
-
-You can also use the excellent [tox](http://tox.readthedocs.org/en/latest/) testing tool to run the tests against all supported versions of Python and Django. Install tox globally, and then simply run:
-
-```bash
-$ tox
-```
 
 ## Documentation
 
