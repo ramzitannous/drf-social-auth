@@ -3,9 +3,9 @@ import enum
 from django.db import models
 
 
-class Providers(enum.Enum):
+class Providers(str,enum.Enum):
     FACEBOOK = "FACEBOOK"
-    GOOGLE = "GMAIL"
+    GOOGLE = "GOOGLE"
 
     def __repr__(self):
         return self.name
@@ -20,3 +20,10 @@ class AuthProvider(models.Model):
     client_id = models.CharField(max_length=100, null=False, blank=False)
     client_secret = models.CharField(max_length=100, null=False, blank=False)
     scopes = models.TextField(default="[]", null=False, blank=False)
+
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        super().save(force_insert, force_update, using, update_fields)
+        from drf_social.helpers import load_providers
+        load_providers()
+
+

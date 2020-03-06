@@ -1,5 +1,5 @@
 import json
-from django.conf import settings
+import django.conf as conf
 
 from drf_social.models import AuthProvider, Providers
 
@@ -21,6 +21,6 @@ AUTH_MAPPING = {
 def load_providers():
     all_auth = AuthProvider.objects.all()
     for auth in all_auth:
-        setattr(settings, f"SOCIAL_AUTH_{AUTH_MAPPING[auth.provider]}_KEY", auth.client_id)
-        setattr(settings, f"SOCIAL_AUTH_{AUTH_MAPPING[auth.provider]}_SECRET", auth.client_secret)
-        setattr(settings, f"SOCIAL_AUTH_{AUTH_MAPPING[auth.provider]}_SCOPE", extract_scopes(auth.scopes))
+        setattr(conf.settings, f"SOCIAL_AUTH_{AUTH_MAPPING[auth.provider]}_KEY", auth.client_id)
+        setattr(conf.settings, f"SOCIAL_AUTH_{AUTH_MAPPING[auth.provider]}_SECRET", auth.client_secret)
+        setattr(conf.settings, f"SOCIAL_AUTH_{AUTH_MAPPING[auth.provider]}_SCOPE", extract_scopes(auth.scopes))
