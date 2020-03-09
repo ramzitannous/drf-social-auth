@@ -18,8 +18,8 @@ class Providers(str, enum.Enum):
 
 class AuthProvider(models.Model):
     provider = models.CharField(choices=((p, p) for p in Providers), max_length=10, null=False, blank=False)
-    client_id = models.CharField(max_length=100, null=False, blank=False)
-    client_secret = models.CharField(max_length=100, null=False, blank=False)
+    client_id = models.CharField(max_length=200, null=False, blank=False)
+    client_secret = models.CharField(max_length=200, null=False, blank=False)
     scopes = models.TextField(default="[]", null=False, blank=False)
 
     class Meta:
