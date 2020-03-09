@@ -1,13 +1,10 @@
 
 drf-social-auth  
-======================================  
-  
-|build-status-image| |pypi-version|  
-  
+======================================    
 Overview  
 --------  
   
-Social Authentication For Django Rest Framework  
+Social Authentication For Django Rest Framework  (Google, Facebook, Instagram)
   
 Requirements  
 ------------  
@@ -20,7 +17,8 @@ Installation
 ------------  
   
 Install using ``pip install drf_social``  
-  
+ 
+ 
 Usage  
 -------  
   
