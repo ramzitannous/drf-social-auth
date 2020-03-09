@@ -28,13 +28,15 @@ Usage
 `INSTALLED_APPS = [  
   'social_django',  
   'drf_social'  
-] `  
+]`
+
 2. Configure provider at django admin
 
 Customization
 -------------
 
 Custom JWT Token Response
+
 1. Inherit from SocialLoginView with custom serializer
 
 Documentation  
