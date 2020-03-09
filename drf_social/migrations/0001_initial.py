@@ -16,7 +16,6 @@ class Migration(migrations.Migration):
             name='AuthProvider',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=20)),
                 ('provider', models.CharField(choices=[(provider, provider) for provider in drf_social.models.Providers], max_length=10)),
                 ('client_id', models.CharField(max_length=100)),
                 ('client_secret', models.CharField(max_length=100)),
