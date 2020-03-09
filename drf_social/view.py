@@ -12,10 +12,11 @@ from drf_social.serializers import SocialInputSerializer, JWTResponseSerializer
 class SocialLoginView(GenericAPIView):
     permission_classes = []
     authentication_classes = []
-    serializer_class = JWTResponseSerializer
+    serializer_class = SocialInputSerializer
+    response_serializer = JWTResponseSerializer
 
     def post(self, *args, **kwargs):
-        token_serializer = SocialInputSerializer(data=self.request.data)
+        token_serializer = self.get_serializer_class()(data=self.request.data)
         token_serializer.is_valid(raise_exception=True)
         try:
             AuthProvider.objects.get(client_id=token_serializer.validated_data['client_id'],
@@ -31,7 +32,7 @@ class SocialLoginView(GenericAPIView):
         if user is None:
             raise AuthenticationFailed("Invalid Social Token")
 
-        serializer_class = self.get_serializer_class()
+        serializer_class = self.response_serializer
         if not hasattr(serializer_class,  "get_token"):
             raise TypeError("serializer class must implement get_token method")
 
