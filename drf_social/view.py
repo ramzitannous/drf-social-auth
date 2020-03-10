@@ -1,5 +1,5 @@
 from requests import HTTPError
-from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.exceptions import NotAuthenticated
 from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView
 from social_core.exceptions import SocialAuthBaseException
@@ -28,9 +28,9 @@ class SocialLoginView(GenericAPIView):
         try:
             user = do_login(self.request, token_serializer.validated_data)
         except (SocialAuthBaseException, HTTPError) as e:
-            raise AuthenticationFailed(e)
+            raise NotAuthenticated(e)
         if user is None:
-            raise AuthenticationFailed("Invalid Social Token")
+            raise NotAuthenticated("Invalid Social Token")
 
         serializer_class = self.response_serializer
         if not hasattr(serializer_class,  "get_token"):

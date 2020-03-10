@@ -54,7 +54,7 @@ version = get_version(package)
 
 if sys.argv[-1] == 'publish':
     os.system("python setup.py sdist bdist_wheel")
-    os.system("twine upload dist/*")
+    os.system("twine upload dist/* --verbose")
     sys.exit()
 
 
